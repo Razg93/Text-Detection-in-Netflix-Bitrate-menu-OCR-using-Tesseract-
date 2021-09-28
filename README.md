@@ -1,7 +1,7 @@
 # Text-Detection-in-Netflix-Bitrate-menu-OCR-using-Tesseract-
 In this project I manage to detect text in image with network performance values during Netfilx streaming.
 I learned how to detect individual characters and words and how to place bounding boxes around them.
-Using Python-tesseract an optical character recognition (OCR) tool for python and image processing techniques I succeed recognize and “read” the text in Netflix movies and export those values to CSV file.
+Using Python-tesseract an optical character recognition (OCR) tool for python and image processing techniques I succeeded to recognize and “read” the text in Netflix movies and export those values to CSV file.
 
 *To open Netflix bitrate menu press Shift + Alt + Q on keyboard. Use screen recorder tool to record Netflix movie.
 
