@@ -2,45 +2,6 @@ import os, sys, subprocess, pkg_resources
 from functools import wraps
 from timeit import default_timer as timer
 
-#from nacl import exceptions
-
-def is_on_intel_network():
-    # importing socket module
-    import socket
-    # getting the hostname by socket.gethostname() method
-    hostname = socket.gethostname()
-    # getting the IP address using socket.gethostbyname() method
-    ip_address = socket.gethostbyname(hostname)
-    # printing the hostname and ip_address
-    print("Current hostname: {}".format(hostname))
-    print("Current IP Address: {}".format(ip_address))
-
-    # if this script run on Intel network
-    return ip_address.startswith("10")
-
-
-def install_python_libraries(package):
-    args_list = [sys.executable, "-m", "pip", "install", package]
-    # if this script run on Intel network
-    if is_on_intel_network():
-        args_list += ["--proxy", "http://proxy.jer.intel.com:911"]
-    subprocess.call(args_list)
-
-
-def check_and_install_libraries():
-    # install external libraries for text detection and image processing
-    for package in ['python-dateutil', 'Pillow', 'pywin32', 'pypiwin32', 'matplotlib', 'lxml',
-                    'pyscreenshot', 'opencv-python', 'pytesseract', 'numpy', 'mss', 'selenium', 'pandas']:
-        try:
-            dist = pkg_resources.get_distribution(package)
-            print('{} ({}) is installed'.format(dist.key, dist.version))
-        except pkg_resources.DistributionNotFound:
-            print('{} is NOT installed. Installing it'.format(package))
-            install_python_libraries(package)
-
-
-check_and_install_libraries()
-
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
